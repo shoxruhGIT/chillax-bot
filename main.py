@@ -1,10 +1,10 @@
     import os
-    import logging
-    from uuid import uuid4
-    from threading import Thread
-    from flask import Flask
-    from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, Message
-    from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, ContextTypes, filters
+import logging
+from uuid import uuid4
+from threading import Thread
+from flask import Flask
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, Message
+from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, ContextTypes, filters
 
     # ===== CONFIG =====
     logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
