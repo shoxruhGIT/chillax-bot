@@ -96,23 +96,15 @@ async def forward_message(context: ContextTypes.DEFAULT_TYPE, from_user: int, to
         elif message.sticker:
             sent = await context.bot.send_sticker(to_user, message.sticker.file_id, reply_markup=reply_markup)
         elif message.animation:
-
-        # Try MarkdownV2 (escape special characters)
-        escaped = content.replace("_", "\\_").replace("*", "\\*").replace("[", "\\[").replace("`", "\\`")
-        sent = await context.bot.send_animation(
-            to_user,
-            animation=message.animation.file_id,
-            caption=f"📨 *Anonymous GIF*\n\n{escaped}",
-            reply_markup=reply_markup,
-            parse_mode="MarkdownV2"
-        )
-
-        # Fallback: send without caption or parse_mode
-        sent = await context.bot.send_animation(
-            to_user,
-            animation=message.animation.file_id,
-            reply_markup=reply_markup
-        )
+            # Try MarkdownV2 (escape special characters)
+            escaped = content.replace("_", "\\_").replace("*", "\\*").replace("[", "\\[").replace("`", "\\`")
+            sent = await context.bot.send_animation(
+                to_user,
+                animation=message.animation.file_id,
+                caption=f"📨 *Anonymous GIF*\n\n{escaped}",
+                reply_markup=reply_markup,
+                parse_mode="MarkdownV2"
+            )
         else:
             await context.bot.send_message(from_user, "❌ Unsupported message type.")
             return
